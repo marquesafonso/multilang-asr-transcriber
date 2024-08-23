@@ -3,8 +3,8 @@ from src.transcriber import transcriber
 
 def main():
     with gr.Blocks(title='multilang-asr-transcriber', delete_cache=(86400, 86400)) as demo:
-        gr.Markdown('# multilang-asr-transcriber')
-        gr.Markdown('### A multilingual automatic speech transcription tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports translation to english and user setting of max words per line.')
+        gr.Markdown('## Multilang ASR Transcriber')
+        gr.Markdown('An automatic speech recognition tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports multilingual video transcription and translation to english. Users may set the max words per line.')
         video_file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
         max_words_per_line = gr.Number(value=6, label="Max words per line")
         task = gr.Dropdown(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
