@@ -3,7 +3,6 @@ from src.transcriber import transcriber
 
 def main():
     with gr.Blocks(analytics_enabled=False, title='multilang-asr-transcriber') as demo:
-        gr.set_static_paths(paths=["/tmp/gradio/"])
         gr.Markdown('# multilang-asr-transcriber')
         gr.Markdown('### A multilingual automatic speech transcription tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports translation to english and user setting of max words per line.')
         video_file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
@@ -11,12 +10,13 @@ def main():
         task = gr.Dropdown(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
         text_output = gr.Textbox(label="Text transcription")
         srt_file = gr.File(file_count="single", file_types=[".srt"], label="SRT file")
+        gr.set_static_paths(paths=[srt_file])
         gr.Interface(transcriber,
                     inputs=[video_file, max_words_per_line, task],
                     outputs=[text_output,srt_file],
                     allow_flagging="never",
                     analytics_enabled=False)
-    demo.launch()
+    demo.launch(allowed_paths=[srt_file])
 
 if __name__ == '__main__':
     main()
