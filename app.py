@@ -10,13 +10,12 @@ def main():
         task = gr.Dropdown(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
         text_output = gr.Textbox(label="Text transcription")
         srt_file = gr.File(file_count="single", file_types=[".srt"], label="SRT file")
-        gr.set_static_paths(paths=[srt_file])
         gr.Interface(transcriber,
                     inputs=[video_file, max_words_per_line, task],
                     outputs=[text_output,srt_file],
                     allow_flagging="never",
                     analytics_enabled=False)
-    demo.launch(allowed_paths=[srt_file])
+    demo.launch()
 
 if __name__ == '__main__':
     main()
