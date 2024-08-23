@@ -15,7 +15,7 @@ def main():
                     outputs=[text_output,srt_file],
                     allow_flagging="never",
                     analytics_enabled=False)
-    demo.launch()
+    demo.launch(allowed_paths=["https://marquesafonso-multilang-asr-transcriber.hf.space/file=/tmp/gradio/"])
 
 if __name__ == '__main__':
     main()
