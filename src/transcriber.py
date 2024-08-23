@@ -45,7 +45,6 @@ def transcriber(video_input:gr.File,
                 max_words_per_line:int,
                 task:str):
     srt_filepath = os.path.normpath(f"{video_input.split('.')[0]}.srt")
-    gr.set_static_paths(paths=[srt_filepath])
     audio_input = convert_video_to_audio(video_input)
     model_size = "large-v3"
     model = WhisperModel(model_size, device="cpu", compute_type="int8")
