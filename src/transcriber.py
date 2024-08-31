@@ -23,6 +23,7 @@ def convert_seconds_to_time(seconds):
 def write_srt(segments, max_words_per_line, srt_path):
     with open(srt_path, "w", encoding='utf-8') as file:
         result = ''
+        result_clean = []
         line_counter = 1
         for _, segment in enumerate(segments):
             words_in_line = []
@@ -35,11 +36,12 @@ def write_srt(segments, max_words_per_line, srt_path):
                         end_time = convert_seconds_to_time(words_in_line[-1].end)
                         line_text = ' '.join([w.word.strip() for w in words_in_line])
                         result += f"{line_counter}\n{start_time} --> {end_time}\n{line_text}\n\n"
+                        result_clean += [line_text]
                         # Reset for the next line and increment line counter
                         line_counter += 1
                     words_in_line = []  # Reset words list for the next line
         file.write(result)
-        return result, srt_path
+        return result, srt_path, " ".join(result_clean)
 
 def transcriber(video_input:gr.File,
                 max_words_per_line:int,
