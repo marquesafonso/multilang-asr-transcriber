@@ -48,8 +48,8 @@ def transcriber(video_input:gr.File,
                 task:str):
     srt_filepath = os.path.normpath(f"{video_input.split('.')[0]}.srt")
     audio_input = convert_video_to_audio(video_input)
-    model_size = "distil-large-v3"
-    model = WhisperModel(model_size, device="cpu", compute_type="int8")
+    model_version = "large-v3"
+    model = WhisperModel(model_version, device="cpu", compute_type="int8")
     segments, _ = model.transcribe(
         audio_input,
         beam_size=5,
