@@ -2,7 +2,7 @@ import gradio as gr
 from src.transcriber import transcriber
 
 def main():
-    with gr.Blocks(title='multilang-asr-transcriber', delete_cache=(86400, 86400), theme=gr.themes.Ocean()) as demo:
+    with gr.Blocks(title='multilang-asr-transcriber', delete_cache=(86400, 86400), theme=gr.themes.Origin()) as demo:
         gr.Markdown('## Multilang ASR Transcriber')
         gr.Markdown('An automatic speech recognition tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports multilingual video transcription and translation to english. Users may set the max words per line.')
         video_file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
