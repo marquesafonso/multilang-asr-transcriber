@@ -7,7 +7,7 @@ def main():
         gr.Markdown('An automatic speech recognition tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports multilingual video transcription and translation to english. Users may set the max words per line.')
         video_file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
         max_words_per_line = gr.Number(value=6, label="Max words per line")
-        task = gr.Dropdown(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
+        task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
         text_output = gr.Textbox(label="SRT Text transcription", show_copy_button=True)
         srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
         text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
