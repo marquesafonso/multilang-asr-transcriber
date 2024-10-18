@@ -4,10 +4,11 @@ emoji: 👁
 colorFrom: gray
 colorTo: blue
 sdk: gradio
-sdk_version: 4.42.0
+sdk_version: 5.1.0
 app_file: app.py
-pinned: false
+pinned: true
 license: cc-by-nc-4.0
+short_description: A multilingual automatic speech transcription tool
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
