@@ -44,12 +44,12 @@ def write_srt(segments, max_words_per_line, srt_path):
         return result, srt_path, " ".join(result_clean)
 
 def transcriber(file_input:gr.File,
-                video: bool,
+                file_type: str,
                 max_words_per_line:int,
                 task:str,
                 model_version:str):
     srt_filepath = os.path.normpath(f"{file_input.split('.')[0]}.srt")
-    if video:
+    if file_type == "video" :
         audio_input = convert_video_to_audio(file_input)
     else:
         audio_input = file_input
