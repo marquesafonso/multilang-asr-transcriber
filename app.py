@@ -9,6 +9,7 @@ def main():
         with gr.Tab("Video"):
             video = True
             file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
+            file_type = gr.Radio(choices=["video"], value="video", label="File Type")
             max_words_per_line = gr.Number(value=6, label="Max words per line")
             task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
             model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2", "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
@@ -16,13 +17,14 @@ def main():
             srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
             text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
             gr.Interface(transcriber,
-                        inputs=[file, video, max_words_per_line, task, model_version],
+                        inputs=[file, file_type, max_words_per_line, task, model_version],
                         outputs=[text_output, srt_file, text_clean_output],
                         allow_flagging="never")
         
         with gr.Tab("Audio"):
             video = False
             file = gr.File(file_types=["audio"],type="filepath", label="Upload an audio file")
+            file_type = gr.Radio(choices=["audio"], value="audio", label="File Type")
             max_words_per_line = gr.Number(value=6, label="Max words per line")
             task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
             model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2", "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
@@ -30,7 +32,7 @@ def main():
             srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
             text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
             gr.Interface(transcriber,
-                        inputs=[file, video, max_words_per_line, task, model_version],
+                        inputs=[file, file_type, max_words_per_line, task, model_version],
                         outputs=[text_output, srt_file, text_clean_output],
                         allow_flagging="never")
     demo.launch()
