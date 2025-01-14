@@ -1,25 +1,7 @@
 import gradio as gr
 from src.transcriber import transcriber
 
-def main():
-
-    audio_chunked = gr.Interface(
-            fn=transcribe_chunked_audio,
-            inputs=[
-                gr.Audio(sources=["upload"], label="Audio file", type="filepath"),
-                gr.Radio(["transcribe", "translate"], label="Task", value="transcribe"),
-                gr.Checkbox(value=False, label="Return timestamps"),
-            ],
-            outputs=[
-                gr.Textbox(label="Transcription", show_copy_button=True),
-                gr.Textbox(label="Transcription Time (s)"),
-            ],
-            allow_flagging="never",
-            title=title,
-            description=description,
-            article=article,
-        )
-    
+def main():    
     with gr.Blocks(title='multilang-asr-transcriber', delete_cache=(86400, 86400), theme=gr.themes.Base()) as demo:
         gr.Markdown('## Multilang ASR Transcriber')
         gr.Markdown('An automatic speech recognition tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports multilingual video transcription and translation to english. Users may set the max words per line.')
