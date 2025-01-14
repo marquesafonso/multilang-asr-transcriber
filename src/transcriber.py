@@ -43,12 +43,16 @@ def write_srt(segments, max_words_per_line, srt_path):
         file.write(result)
         return result, srt_path, " ".join(result_clean)
 
-def transcriber(video_input:gr.File,
+def transcriber(file_input:gr.Audio | gr.Video,
                 max_words_per_line:int,
                 task:str,
                 model_version:str):
+    
     srt_filepath = os.path.normpath(f"{video_input.split('.')[0]}.srt")
-    audio_input = convert_video_to_audio(video_input)
+    if type(file_input) == gr.Video:
+        audio_input = convert_video_to_audio(file_input)
+    else:
+        audio_input = file_input
     model = WhisperModel(model_version, device="cpu", compute_type="int8")
     segments, _ = model.transcribe(
         audio_input,
