@@ -13,9 +13,9 @@ def main():
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
                 task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2", "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
-                text_output = gr.Textbox(label="SRT Text transcription", show_copy_button=True)
+                text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
-                text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
+                text_clean_output = gr.Textbox(label="Text transcription")
                 gr.Interface(transcriber,
                             inputs=[file, file_type, max_words_per_line, task, model_version],
                             outputs=[text_output, srt_file, text_clean_output],
@@ -28,9 +28,9 @@ def main():
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
                 task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2", "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
-                text_output = gr.Textbox(label="SRT Text transcription", show_copy_button=True)
+                text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
-                text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
+                text_clean_output = gr.Textbox(label="Text transcription")
                 gr.Interface(transcriber,
                             inputs=[file, file_type, max_words_per_line, task, model_version],
                             outputs=[text_output, srt_file, text_clean_output],
