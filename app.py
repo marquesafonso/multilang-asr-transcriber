@@ -13,7 +13,7 @@ def main():
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
                 task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
-                                                "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+                                                "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
@@ -30,7 +30,7 @@ def main():
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
                 task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
-                                                "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+                                                "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
