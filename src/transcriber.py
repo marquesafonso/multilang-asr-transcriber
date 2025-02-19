@@ -48,6 +48,7 @@ def transcriber(file_input:gr.File,
                 max_words_per_line:int,
                 task:str,
                 model_version:str):
+    print(task)
     srt_filepath = os.path.normpath(f"{file_input.split('.')[0]}.srt")
     if file_type == "video" :
         audio_input = convert_video_to_audio(file_input)
