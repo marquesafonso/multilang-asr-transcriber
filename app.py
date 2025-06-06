@@ -48,9 +48,8 @@ def main():
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
                     outputs=[text_output, srt_file, text_clean_output]
-                )
-                
-    demo.launch()
+                )        
+        demo.launch()
 
 if __name__ == '__main__':
     main()
