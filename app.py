@@ -9,7 +9,6 @@ def main():
             with gr.Tab("Video", id="video"):
                 file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
                 file_type = gr.Radio(choices=["video"], value="video", label="File Type", visible=False)
-                print(file_type)
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
                 task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
@@ -18,10 +17,12 @@ def main():
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
-                gr.Interface(transcriber,
-                            inputs=[file, file_type, max_words_per_line, task, model_version],
-                            outputs=[text_output, srt_file, text_clean_output],
-                            allow_flagging="never")
+                transcribe_btn = gr.Button(value="Transcribe")
+                transcribe_btn.click(
+                    fn=transcriber,
+                    inputs=[file, file_type, max_words_per_line, task, model_version],
+                    outputs=[text_output, srt_file, text_clean_output]
+                    )
             
             with gr.Tab("Audio", id = "audio"):
                 file = gr.File(file_types=["audio"],type="filepath", label="Upload an audio file")
@@ -34,10 +35,12 @@ def main():
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
-                gr.Interface(transcriber,
-                            inputs=[file, file_type, max_words_per_line, task, model_version],
-                            outputs=[text_output, srt_file, text_clean_output],
-                            allow_flagging="never")
+                transcribe_btn = gr.Button(value="Transcribe")
+                transcribe_btn.click(
+                    fn=transcriber,
+                    inputs=[file, file_type, max_words_per_line, task, model_version],
+                    outputs=[text_output, srt_file, text_clean_output]
+                    )
     demo.launch()
 
 if __name__ == '__main__':
