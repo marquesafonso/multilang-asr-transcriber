@@ -7,40 +7,49 @@ def main():
         gr.Markdown('An automatic speech recognition tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports multilingual video transcription and translation to english. Users may set the max words per line.')
         with gr.Tabs(selected="video") as tabs:
             with gr.Tab("Video", id="video"):
-                file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
-                file_type = gr.Radio(choices=["video"], value="video", label="File Type", visible=False)
-                max_words_per_line = gr.Number(value=6, label="Max words per line")
-                task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
-                model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
-                                                "turbo",
-                                                "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
-                text_output = gr.Textbox(label="SRT Text transcription")
-                srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
-                text_clean_output = gr.Textbox(label="Text transcription")
-                transcribe_btn = gr.Button(value="Transcribe")
+                with gr.Row():
+                    with gr.Column():
+                        video = True
+                        file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
+                        file_type = gr.Radio(choices=["video"], value="video", label="File Type", visible=False)
+                        max_words_per_line = gr.Number(value=6, label="Max words per line")
+                        task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
+                        model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
+                                                        "turbo",
+                                                        "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
+                        transcribe_btn = gr.Button(value="Transcribe", variant="primary")
+                    with gr.Column():
+                        text_output = gr.Textbox(label="SRT Text transcription")
+                        srt_file = gr.File(value=None, file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
+                        text_clean_output = gr.Textbox(label="Text transcription")
                 transcribe_btn.click(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
                     outputs=[text_output, srt_file, text_clean_output]
-                    )
-            
+                )
+                
             with gr.Tab("Audio", id = "audio"):
-                file = gr.File(file_types=["audio"],type="filepath", label="Upload an audio file")
-                file_type = gr.Radio(choices=["audio"], value="audio", label="File Type", visible=False)
-                max_words_per_line = gr.Number(value=6, label="Max words per line")
-                task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
-                model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
-                                                "turbo",
-                                                "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
-                text_output = gr.Textbox(label="SRT Text transcription")
-                srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
-                text_clean_output = gr.Textbox(label="Text transcription")
-                transcribe_btn = gr.Button(value="Transcribe")
+                with gr.Row():
+                    with gr.Column():
+                        video = False
+                        file = gr.File(file_types=["audio"],type="filepath", label="Upload an audio file")
+                        file_type = gr.Radio(choices=["audio"], value="audio", label="File Type", visible=False)
+                        max_words_per_line = gr.Number(value=6, label="Max words per line")
+                        task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
+                        model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
+                                                        "turbo",
+                                                        "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
+                        transcribe_btn = gr.Button(value="Transcribe", variant="primary")
+                    with gr.Column():
+                        text_output = gr.Textbox(label="SRT Text transcription")
+                        srt_file = gr.File(value=None, file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
+                        text_clean_output = gr.Textbox(label="Text transcription")
                 transcribe_btn.click(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
                     outputs=[text_output, srt_file, text_clean_output]
-                    )
+                )
+                
     demo.launch()
 
 if __name__ == '__main__':
