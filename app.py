@@ -16,7 +16,7 @@ def main():
                                                 "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
                 text_output = gr.Textbox(label="SRT Text transcription")
-                srt_file = gr.File(value=None, file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
+                srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
                 gr.Interface(
                     fn=transcriber,
@@ -34,7 +34,7 @@ def main():
                                                 "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
                 text_output = gr.Textbox(label="SRT Text transcription")
-                srt_file = gr.File(value=None, file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
+                srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
                 gr.Interface(
                     fn=transcriber,
