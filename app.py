@@ -8,7 +8,7 @@ def main():
         with gr.Tabs(selected="video") as tabs:
             with gr.Tab("Video", id="video"):
                 file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
-                file_type = gr.Radio(choices=["video"], value="video", label="File Type", visible=False)
+                file_type = gr.Radio(value="video", choices=["video"], value="video", label="File Type", visible=False)
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
                 task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
@@ -24,7 +24,7 @@ def main():
             
             with gr.Tab("Audio", id = "audio"):
                 file = gr.File(file_types=["audio"],type="filepath", label="Upload an audio file")
-                file_type = gr.Radio(choices=["audio"], value="audio", label="File Type", visible=False)
+                file_type = gr.Radio(value="audio", choices=["audio"], value="audio", label="File Type", visible=False)
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
                 task = gr.Radio(choices=["transcribe", "translate"], value="transcribe", label="Select Task")
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
