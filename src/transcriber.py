@@ -64,7 +64,7 @@ def write_srt(segments, max_words_per_line, srt_path):
                     words_in_line = []
 
         file.write(result)
-        return result, srt_path, " ".join(result_clean), json_output
+        return result, srt_path, " ".join(result_clean), str(json_output)
 
 
 def transcriber(file_input:gr.File,

@@ -1,9 +1,5 @@
 import gradio as gr
 from src.transcriber import transcriber
-import os
-
-# os.environ["GRADIO_TEMP_DIR"] = os.path.join(os.getcwd(), "tmp")
-# os.environ["HF_HOME"] = os.path.join(os.getcwd(), "hf_tmp")
 
 
 def main():    
@@ -23,7 +19,7 @@ def main():
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
-                json_output = gr.JSON(label="JSON Transcription")
+                json_output = gr.Textbox(label="JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
@@ -42,7 +38,7 @@ def main():
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
-                json_output = gr.JSON(label="JSON Transcription")
+                json_output = gr.Textbox(label="JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
