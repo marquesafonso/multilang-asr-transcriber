@@ -1,5 +1,10 @@
 import gradio as gr
 from src.transcriber import transcriber
+import os
+
+# os.environ["GRADIO_TEMP_DIR"] = os.path.join(os.getcwd(), "tmp")
+# os.environ["HF_HOME"] = os.path.join(os.getcwd(), "hf_tmp")
+
 
 def main():    
     with gr.Blocks(title='multilang-asr-transcriber', delete_cache=(86400, 86400), theme=gr.themes.Base()) as demo:
@@ -18,10 +23,11 @@ def main():
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
+                json_output = gr.JSON("JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
-                    outputs=[text_output, srt_file, text_clean_output],
+                    outputs=[text_output, srt_file, text_clean_output, json_output],
                     allow_flagging="never"
                 )
             with gr.Tab("Audio", id = "audio"):
@@ -36,10 +42,11 @@ def main():
                 text_output = gr.Textbox(label="SRT Text transcription")
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription")
+                json_output = gr.JSON("JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
-                    outputs=[text_output, srt_file, text_clean_output],
+                    outputs=[text_output, srt_file, text_clean_output, json_output],
                     allow_flagging="never"
                 )    
         demo.launch()

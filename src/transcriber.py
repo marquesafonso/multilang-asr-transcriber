@@ -24,24 +24,48 @@ def write_srt(segments, max_words_per_line, srt_path):
     with open(srt_path, "w", encoding='utf-8') as file:
         result = ''
         result_clean = []
+        json_output = {
+            "lines": []
+        }
+
         line_counter = 1
         for _, segment in enumerate(segments):
             words_in_line = []
             for w, word in enumerate(segment.words):
                 words_in_line.append(word)
+
                 # Write the line if max words limit reached or it's the last word in the segment
                 if len(words_in_line) == max_words_per_line or w == len(segment.words) - 1:
-                    if words_in_line:  # Check to avoid writing a line if there are no words
+                    if words_in_line:
                         start_time = convert_seconds_to_time(words_in_line[0].start)
                         end_time = convert_seconds_to_time(words_in_line[-1].end)
                         line_text = ' '.join([w.word.strip() for w in words_in_line])
+
+                        # SRT format
                         result += f"{line_counter}\n{start_time} --> {end_time}\n{line_text}\n\n"
                         result_clean += [line_text]
-                        # Reset for the next line and increment line counter
+
+                        # JSON format
+                        json_output["lines"].append({
+                            "line_index": line_counter,
+                            "start": words_in_line[0].start,
+                            "end": words_in_line[-1].end,
+                            "text": line_text,
+                            "words": [
+                                {
+                                    "word": w.word.strip(),
+                                    "start": w.start,
+                                    "end": w.end
+                                } for w in words_in_line
+                            ]
+                        })
+
                         line_counter += 1
-                    words_in_line = []  # Reset words list for the next line
+                    words_in_line = []
+
         file.write(result)
-        return result, srt_path, " ".join(result_clean)
+        return result, srt_path, " ".join(result_clean), json_output
+
 
 def transcriber(file_input:gr.File,
                 file_type: str,
