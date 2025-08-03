@@ -16,10 +16,10 @@ def main():
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
                                                 "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
-                text_output = gr.Textbox(label="SRT Text transcription")
+                text_output = gr.Textbox(label="SRT Text transcription", show_copy_button=True)
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
-                text_clean_output = gr.Textbox(label="Text transcription")
-                json_output = gr.Textbox(label="JSON Transcription")
+                text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
+                json_output = gr.JSON(label="JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
@@ -35,10 +35,10 @@ def main():
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
                                                 "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
-                text_output = gr.Textbox(label="SRT Text transcription")
+                text_output = gr.Textbox(label="SRT Text transcription", show_copy_button=True)
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
-                text_clean_output = gr.Textbox(label="Text transcription")
-                json_output = gr.Textbox(label="JSON Transcription")
+                text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
+                json_output = gr.JSON(label="JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
                     inputs=[file, file_type, max_words_per_line, task, model_version],
