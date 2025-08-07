@@ -1,7 +1,6 @@
 import gradio as gr
 from src.transcriber import transcriber
 
-
 def main():    
     with gr.Blocks(title='multilang-asr-transcriber', delete_cache=(86400, 86400), theme=gr.themes.Base()) as demo:
         gr.Markdown('## Multilang ASR Transcriber')
