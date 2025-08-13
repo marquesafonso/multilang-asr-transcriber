@@ -3,6 +3,4 @@
 pyproject.toml
 uv.lock
 */__pycache__/
-Dockerfile
-docker-compose.yml
 .gradio

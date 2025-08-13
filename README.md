@@ -3,9 +3,9 @@ title: Multilang Asr Transcriber
 emoji: 👁
 colorFrom: gray
 colorTo: blue
-sdk: gradio
-sdk_version: 5.1.0
+sdk: docker
 app_file: app.py
+app_port: 7860
 pinned: true
 license: cc-by-nc-4.0
 short_description: A multilingual automatic speech transcription tool
