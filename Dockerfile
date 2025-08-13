@@ -1,7 +1,7 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim-bullseye
 
-USER root
+RUN useradd -m -u 1000 user
 
 # Set the working directory in the container to /app
 WORKDIR /app
@@ -20,4 +20,4 @@ EXPOSE 7860
 # Run main.py when the container launches
 CMD ["python", "main.py"]
 
-USER 1001
+USER 1000
