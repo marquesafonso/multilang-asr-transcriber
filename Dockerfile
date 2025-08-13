@@ -18,6 +18,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 7860
 
 # Run main.py when the container launches
-CMD ["python", "main.py"]
+CMD ["python", "app.py"]
 
 USER 1001
