@@ -4,7 +4,7 @@ emoji: 👁
 colorFrom: gray
 colorTo: blue
 sdk: docker
-app_file: app.py
+app_file: main.py
 app_port: 7680
 pinned: true
 license: cc-by-nc-4.0
