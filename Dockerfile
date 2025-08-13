@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y imagemagick && sed -i '91d' /etc/ImageM
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 8000 available to the world outside this container
-EXPOSE 7680
+EXPOSE 7860
 
 # Run main.py when the container launches
 CMD ["python", "main.py"]

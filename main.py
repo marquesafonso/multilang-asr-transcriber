@@ -42,7 +42,7 @@ def main():
                     outputs=[text_output, srt_file, text_clean_output, json_output],
                     allow_flagging="never"
                 )    
-        demo.launch()
+        demo.launch(server_name="0.0.0.0", server_port=7860)
 
 if __name__ == '__main__':
     main()
