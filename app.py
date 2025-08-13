@@ -7,7 +7,6 @@ def main():
         gr.Markdown('An automatic speech recognition tool using [faster-whisper](https://github.com/SYSTRAN/faster-whisper). Supports multilingual video transcription and translation to english. Users may set the max words per line.')
         with gr.Tabs(selected="video") as tabs:
             with gr.Tab("Video", id="video"):
-                video = True
                 file = gr.File(file_types=["video"],type="filepath", label="Upload a video")
                 file_type = gr.Radio(choices=["video"], value="video", label="File Type", visible=False)
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
@@ -26,7 +25,6 @@ def main():
                     allow_flagging="never"
                 )
             with gr.Tab("Audio", id = "audio"):
-                video = False
                 file = gr.File(file_types=["audio"],type="filepath", label="Upload an audio file")
                 file_type = gr.Radio(choices=["audio"], value="audio", label="File Type", visible=False)
                 max_words_per_line = gr.Number(value=6, label="Max words per line")
