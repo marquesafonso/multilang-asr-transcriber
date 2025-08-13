@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.12-slim-bullseye
+FROM python:3.11-slim-bullseye
 
 USER root
 
@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y imagemagick && sed -i '91d' /etc/ImageM
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 8000 available to the world outside this container
-EXPOSE 7860
+EXPOSE 7680
 
 # Run main.py when the container launches
-CMD ["python", "app.py"]
+CMD ["python", "main.py"]
 
 USER 1001

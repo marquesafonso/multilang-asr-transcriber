@@ -5,7 +5,7 @@ colorFrom: gray
 colorTo: blue
 sdk: docker
 app_file: app.py
-app_port: 7860
+app_port: 7680
 pinned: true
 license: cc-by-nc-4.0
 short_description: A multilingual automatic speech transcription tool
