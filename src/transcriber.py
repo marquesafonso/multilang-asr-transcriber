@@ -23,7 +23,7 @@ def convert_seconds_to_time(seconds):
 def write_srt(segments, max_words_per_line, srt_path, device_type):
 
     # Pause and char heuristics
-    max_chars = 26 if device_type == "mobile" else 42
+    max_chars = 23 if device_type == "mobile" else 42
     pause_threshold = 2.0
 
     with open(srt_path, "w", encoding="utf-8") as file:
