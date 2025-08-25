@@ -1,6 +1,8 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim-bullseye
 
+# For local setup use:
+# USER root
 RUN useradd -m -u 1000 user
 
 # Set the working directory in the container to /app

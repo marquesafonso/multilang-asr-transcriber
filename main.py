@@ -14,13 +14,14 @@ def main():
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
                                                 "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
+                device_type = gr.Radio(choices=["desktop", "mobile"], value="desktop", label="Select Device")
                 text_output = gr.Textbox(label="SRT Text transcription", show_copy_button=True)
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
                 json_output = gr.JSON(label="JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
-                    inputs=[file, file_type, max_words_per_line, task, model_version],
+                    inputs=[file, file_type, max_words_per_line, task, model_version, device_type],
                     outputs=[text_output, srt_file, text_clean_output, json_output],
                     allow_flagging="never"
                 )
@@ -32,13 +33,14 @@ def main():
                 model_version = gr.Radio(choices=["deepdml/faster-whisper-large-v3-turbo-ct2",
                                                 "turbo",
                                                 "large-v3"], value="deepdml/faster-whisper-large-v3-turbo-ct2", label="Select Model")
+                device_type = gr.Radio(choices=["desktop", "mobile"], value="desktop", label="Select Device")
                 text_output = gr.Textbox(label="SRT Text transcription", show_copy_button=True)
                 srt_file = gr.File(file_count="single", type="filepath", file_types=[".srt"], label="SRT file")
                 text_clean_output = gr.Textbox(label="Text transcription", show_copy_button=True)
                 json_output = gr.JSON(label="JSON Transcription")
                 gr.Interface(
                     fn=transcriber,
-                    inputs=[file, file_type, max_words_per_line, task, model_version],
+                    inputs=[file, file_type, max_words_per_line, task, model_version, device_type],
                     outputs=[text_output, srt_file, text_clean_output, json_output],
                     allow_flagging="never"
                 )    
